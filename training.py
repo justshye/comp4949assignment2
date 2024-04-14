@@ -30,5 +30,5 @@ accuracy = accuracy_score(y_test, y_pred)
 print("Accuracy:", accuracy)
 
 # Exporting the trained model as a .pkl file
-with open("model.pkl", "wb") as file:
+with open("model_pkl", "wb") as file:
     pickle.dump(model, file)
