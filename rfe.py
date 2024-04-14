@@ -20,7 +20,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 model = LogisticRegression(max_iter=2000)
 
 # Initialize RFE
-rfe = RFE(model, n_features_to_select=10)  # You can adjust the number of features to select
+rfe = RFE(model, n_features_to_select=9)  # You can adjust the number of features to select
 
 # Fit RFE
 rfe.fit(X_train, y_train)
