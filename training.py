@@ -1,35 +1,34 @@
-# Importing necessary libraries
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
+import pickle
 
 # Load the dataset
 data = pd.read_csv("match_data_v5.csv")
 
-# Define features and target variable
-features = [
-    "blueTeamTotalKills",
-    "blueTeamDragonKills",
-    "redTeamDragonKills",
-    "redTeamTotalKills",
-]
+# Selecting features and target variable
+features = ["blueTeamTotalKills", "blueTeamDragonKills", "redTeamDragonKills", "redTeamTotalKills"]
 target = "blueWin"
 
-# Splitting the data into train and test sets
-X_train, X_test, y_train, y_test = train_test_split(
-    data[features], data[target], test_size=0.2, random_state=42
-)
+# Splitting data into features and target variable
+X = data[features]
+y = data[target]
 
-# Initializing the Logistic Regression model
-model = LogisticRegression(max_iter=2000)
+# Splitting data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Training the model
+# Training the logistic regression model
+model = LogisticRegression()
 model.fit(X_train, y_train)
 
-# Making predictions
+# Making predictions on the test set
 y_pred = model.predict(X_test)
 
-# Evaluating the model
+# Calculating accuracy
 accuracy = accuracy_score(y_test, y_pred)
 print("Accuracy:", accuracy)
+
+# Exporting the trained model as a .pkl file
+with open("model.pkl", "wb") as file:
+    pickle.dump(model, file)
