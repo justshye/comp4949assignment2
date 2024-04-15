@@ -24,23 +24,23 @@ best_model = compare_models()
 # Save the best model
 # save_model(best_model, 'model_pkl')
 
-# Plot Model
-plot_model(best_model, plot='auc')
-
-# Plot Feature Importance
-plot_model(best_model, plot='feature')
-
-# Plot Confusion Matrix
-plot_model(best_model, plot='confusion_matrix')
-
-# Plot Class Prediction Error
-plot_model(best_model, plot='error')
-
-# Plot Learning Curve
-plot_model(best_model, plot='learning')
-
-# Plot Validation Curve
-plot_model(best_model, plot='vc')
-
-# Evaluate Model
-evaluate_model(best_model)
+# # Plot Model
+# plot_model(best_model, plot='auc')
+#
+# # Plot Feature Importance
+# plot_model(best_model, plot='feature')
+#
+# # Plot Confusion Matrix
+# plot_model(best_model, plot='confusion_matrix')
+#
+# # Plot Class Prediction Error
+# plot_model(best_model, plot='error')
+#
+# # Plot Learning Curve
+# plot_model(best_model, plot='learning')
+#
+# # Plot Validation Curve
+# plot_model(best_model, plot='vc')
+#
+# # Evaluate Model
+# evaluate_model(best_model)
