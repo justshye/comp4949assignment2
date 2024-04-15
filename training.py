@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.metrics import accuracy_score
 import pickle
 
@@ -10,25 +10,28 @@ data = pd.read_csv("match_data_v5.csv")
 # Selecting features and target variable
 features = ["blueTeamTotalKills", "blueTeamDragonKills", "redTeamDragonKills", "redTeamTotalKills"]
 target = "blueWin"
+data = data[features + [target]]
 
-# Splitting data into features and target variable
-X = data[features]
+# Separate features and target variable
+X = data.drop(columns=[target])
 y = data[target]
 
-# Splitting data into training and testing sets
+# Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Training the logistic regression model
-model = LogisticRegression()
-model.fit(X_train, y_train)
+# Initialize the LDA model
+lda = LinearDiscriminantAnalysis()
 
-# Making predictions on the test set
-y_pred = model.predict(X_test)
+# Fit the model on the training data
+lda.fit(X_train, y_train)
 
-# Calculating accuracy
-accuracy = accuracy_score(y_test, y_pred)
+# Save the model to a file
+with open("model_pkl", "wb") as f:
+    pickle.dump(lda, f)
+
+# Make predictions on the testing data
+predictions = lda.predict(X_test)
+
+# Calculate accuracy
+accuracy = accuracy_score(y_test, predictions)
 print("Accuracy:", accuracy)
-
-# Exporting the trained model as a .pkl file
-with open("model_pkl", "wb") as file:
-    pickle.dump(model, file)

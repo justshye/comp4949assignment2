@@ -49,7 +49,7 @@ def homePost(request):
 def results(request, blueDragons, blueKills, redDragons, redKills):
     print("*** Inside results()")
     # Load the saved model
-    with open('./model_pkl', 'rb') as f:
+    with open('./model_pkl_logistic_regression', 'rb') as f:
         loadedModel = pickle.load(f)
 
     # Create a single prediction DataFrame

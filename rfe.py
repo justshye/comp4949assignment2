@@ -19,11 +19,11 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 # Initialize the model
-model = LogisticRegression(max_iter=2000)
+model = LogisticRegression(max_iter=10000)
 
 # Initialize RFE
 rfe = RFE(
-    model, n_features_to_select=3
+    model, n_features_to_select=5
 )  # You can adjust the number of features to select
 
 # Fit RFE
