@@ -19,7 +19,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 # Initialize the model
-model = LogisticRegression(max_iter=10000)
+model = LogisticRegression(max_iter=2000)
 
 # Initialize RFE
 rfe = RFE(
